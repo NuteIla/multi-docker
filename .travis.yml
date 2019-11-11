@@ -4,7 +4,7 @@ services:
 before_install:
   - docker build -t hazelnut95/react-test -f ./client/Dockerfile.dev ./client/
 script:
-  - docker run hazelnut95/react-test npm test -- --coverage
+  - docker run -e CI=true hazelnut95/react-test npm test
 
 after_sucess:
   - docker build -t hazelnut95/multi-client ./client
