@@ -18,3 +18,15 @@ after_sucess:
   - docker push hazelnut95/multi-nginx
   - docker push hazelnut95/multi-server
   - docker push hazelnut95/multi-worker
+deploy:
+  provider: elasticbeanstalk
+  region: asia-pacfic-1a
+  app: multi-docker
+  env: MultiDocker-env
+  bucket_name: elasticbeanstlak-us-west-1-306477627547
+  bucket_path: docker-multi
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: 
+    secure: $AWS_SECRET_KEY
